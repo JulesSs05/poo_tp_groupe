@@ -9,9 +9,8 @@ public class MeubleResine extends Meuble {
 		// TODO Auto-generated constructor stub
 	}
 
-	public MeubleResine(String nom, Double hauteur, Double largeur, Double profondeur,
-			LinkedList<EtapeFabrication> etapes) {
-		super(nom, hauteur, largeur, profondeur, etapes);
+	public MeubleResine(String nom, Double hauteur, Double largeur, Double profondeur, String etapeEnCours) {
+		super(nom, hauteur, largeur, profondeur, etapeEnCours);
 		// TODO Auto-generated constructor stub
 	}
 	

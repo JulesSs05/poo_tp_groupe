@@ -32,6 +32,13 @@ public class EtapeFabrication {
 		this.personnes = personnes;
 	}
 	
-	
+	public void afficheInfo() {
+	    System.out.print("Étape : " + this.getNom() + " | Personnes : ");
+	    for (Personne p : this.getPersonnes()) {
+	        System.out.print(p.getNom() + " "); 
+	    }
+	    System.out.println(); 
+	}
+
 
 }

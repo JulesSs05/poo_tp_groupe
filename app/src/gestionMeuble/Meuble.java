@@ -8,15 +8,17 @@ public class Meuble {
 	private Double largeur;
 	private Double profondeur;
 	private LinkedList <EtapeFabrication> etapes;
+	private String etapeEnCours;
 	
 	
-	public Meuble(String nom, Double hauteur, Double largeur, Double profondeur, LinkedList<EtapeFabrication> etapes) {
+	public Meuble(String nom, Double hauteur, Double largeur, Double profondeur, String etapeEnCours) {
 		super();
 		this.nom = nom;
 		this.hauteur = hauteur;
 		this.largeur = largeur;
 		this.profondeur = profondeur;
-		this.etapes = etapes;
+		this.etapeEnCours = etapeEnCours;
+		this.etapes = new LinkedList<EtapeFabrication>();
 	}
 
 
@@ -73,6 +75,17 @@ public class Meuble {
 		this.etapes = etapes;
 	}
 	
+	public void setEtapeEnCours(String etape) {
+		this.etapeEnCours = etape;
+	}
+	
+	public String getEtapeEnCours() {
+		return this.etapeEnCours;
+	}
+	
+	public void afficheInfo() {
+		System.out.println("Meuble: " + this.getNom() + ", H: " + this.getHauteur() + "cm, L: " + this.getLargeur() + "cm, P: " + this.getProfondeur() + "cm, etape:" + this.getEtapeEnCours());
+	}	
 	
 	
 

@@ -12,10 +12,9 @@ public class Entreprise {
 		
 	}
 	
-	public Entreprise(String nom, LinkedList<Meuble> meubles) {
-		super();
+	public Entreprise(String nom) {
 		this.nom = nom;
-		this.meubles = meubles;
+		this.meubles = new LinkedList<Meuble>();
 	}
 
 
@@ -38,5 +37,51 @@ public class Entreprise {
 		this.meubles = meubles;
 	}
 	
+	public void fabriquerMeuble(Meuble m, String etape, LinkedList<Personne> p) {
+		if (!this.getMeubles().contains(m)) {
+			this.getMeubles().add(m);
+		}
+		EtapeFabrication etapeFab = new EtapeFabrication(etape, p);
+		m.getEtapes().add(etapeFab);
+		m.setEtapeEnCours(etape);
+	}
+	
+	public void afficherMeuble() {
+		for(int i=0; i<this.getMeubles().size(); i++) {
+			this.getMeubles().get(i).afficheInfo();
+		}
+	}
+	
+	
+	public void afficherMeublesEnCours() {
+	    System.out.println("Meubles en cours de fabrication :");
+	    for (Meuble m : this.meubles) {
+	        LinkedList<EtapeFabrication> etapes = m.getEtapes();
+	        if (!etapes.isEmpty() && !etapes.getLast().getNom().isEmpty()) {
+	            System.out.println("- " + m.getNom());
+	        }
+	    }
+	}
+	
+	public void afficherMeublesParEtape(String etapeCible) {
+	    System.out.println("Meubles à l'étape \"" + etapeCible + "\" :");
+	    for (Meuble m : this.meubles) {
+	        LinkedList<EtapeFabrication> etapes = m.getEtapes();
+	        if (!etapes.isEmpty() && etapes.getLast().getNom().equals(etapeCible)) {
+	            System.out.println("- " + m.getNom());
+	        }
+	    }
+	}
+	
+	public void afficherMeublesFabriques() {
+	    System.out.println("Meubles fabriqués :");
+	    for (Meuble m : this.meubles) {
+	        LinkedList<EtapeFabrication> etapes = m.getEtapes();
+	        if (!etapes.isEmpty() && etapes.getLast() == null) {
+	            System.out.println("- " + m.getNom());
+	        }
+	    }
+	}
+
 
 }
